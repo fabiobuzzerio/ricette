@@ -159,11 +159,11 @@ a[rel="external"]:hover {
 /* RESPONSIVE */
 @media only screen and (max-width: 900px) {
   nav {
-    padding: 20px 10vw;
+    padding: 4vh 15vw;
   }
   article {
     width: auto;
-    padding: 15vh 10vw;
+    padding: 15vh 15vw;
   }
 }
 /* COLORI */

@@ -2,6 +2,7 @@
 <html lang="it" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="svg/1f468-1f3fb-200d-1f373.svg" id="emoji">
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <title>Ricette</title>
