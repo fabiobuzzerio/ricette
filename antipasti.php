@@ -3,32 +3,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="svg/1f968.svg" id="emoji">
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <title>Antipasti</title>
+    <?php
+      $file = basename(__FILE__, '.php');
+      $link = mysqli_connect("localhost", "root", "", "ricette");
+      $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
+      $pagina = mysqli_fetch_assoc($query);
+      echo '<link rel="icon" href="svg/'.$pagina["emoji"].'.svg" id="emoji">
+            <title>'.$pagina["titolo"].'</title>';
+    ?>
   </head>
   <body>
     <article>
       <?php
-        foreach (glob("antipasti/*.html") as $pagine) {
-          $url = $pagine;
-          $url_caricato = file_get_contents($url);
-          $documento = new DOMDocument();
-          libxml_use_internal_errors(TRUE);
-          $documento->loadHTML($url_caricato);
-          $xpath = new DOMXPath($documento);
-          $query = $xpath->query('//title');
-          $titolo = $query[0]->nodeValue;
-          $query = $xpath->query('//link[@rel="icon"]');
-          $emoji = $query[0]->getAttribute("href");
-          $emoji = explode("../", $emoji)[1];
+        $query = mysqli_query($link, "SELECT * FROM pagine WHERE padre='$file'");
+        while ($ricetta = mysqli_fetch_assoc($query)) {
           echo '<div class="paragrafo">
-            <a class="pagine-link" href="'.$url.'">
-              <img src="'.$emoji.'">
-              <span>'.$titolo.'</span>
+            <a class="pagineLink" href="'.$ricetta['file'].'.php">
+              <img src="svg/'.$ricetta['emoji'].'.svg">
+              <span>'.$ricetta['titolo'].'</span>
             </a>
           </div>';
         }
+        mysqli_close($link);
       ?>
     </article>
     <script type="text/javascript" src="main.js"></script>

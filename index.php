@@ -3,40 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="svg/1f468-1f3fb-200d-1f373.svg" id="emoji">
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <title>Ricette</title>
+    <?php
+      $file = basename(__FILE__, '.php');
+      $link = mysqli_connect("localhost", "root", "", "ricette");
+      $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
+      $pagina = mysqli_fetch_assoc($query);
+      echo '<link rel="icon" href="svg/'.$pagina["emoji"].'.svg">
+            <title>'.$pagina["titolo"].'</title>';
+    ?>
   </head>
   <body>
     <article>
-      <div style="background-color: var(--hover); border-radius: 3px; padding: 10px 15px">
-        <img src="svg/26a0.svg" width="16px"> Vuol dire che la ricetta non è stata provata.
+      <div style="background-color: var(--hover); border-radius: 3px; padding: 10px 15px; display: flex; flex-direction: row;">
+        <img src="svg/26a0.svg" width="16px" style="margin-right: 8px;"> Vuol dire che la ricetta non è stata provata.
       </div>
       <?php
-        function caricaLink($categoria) {
-          foreach (glob("$categoria.php") as $pagine) {
-            $url = $pagine;
-            $url_caricato = file_get_contents($url);
-            $documento = new DOMDocument();
-            libxml_use_internal_errors(TRUE);
-            $documento->loadHTML($url_caricato);
-            $xpath = new DOMXPath($documento);
-            $query = $xpath->query('//title');
-            $titolo = $query[0]->nodeValue;
-            $query = $xpath->query('//link[@rel="icon"]');
-            $emoji = $query[0]->getAttribute("href");
-            echo '<div class="paragrafo">
-              <a class="pagine-link" href="'.$url.'">
-                <img src="'.$emoji.'">
-                <span>'.$titolo.'</span>
-              </a>
-            </div>';
-          }
+        $query = mysqli_query($link, "SELECT * FROM pagine WHERE padre='$file'");
+        while ($ricetta = mysqli_fetch_assoc($query)) {
+          echo '<div class="paragrafo">
+            <a class="pagineLink" href="'.$ricetta['file'].'.php">
+              <img src="svg/'.$ricetta['emoji'].'.svg">
+              <span>'.$ricetta['titolo'].'</span>
+            </a>
+          </div>';
         }
-        $categorie = array('antipasti', 'primi', 'secondi', 'contorni', 'dolci', 'liquori');
-        foreach ($categorie as $categoria) {
-          caricaLink($categoria);
-        }
+        mysqli_close($link);
       ?>
     </article>
     <script type="text/javascript" src="main.js"></script>
