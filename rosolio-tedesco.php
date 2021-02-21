@@ -9,13 +9,13 @@
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="svg/'.$pagina["emoji"].'.svg" id="emoji">
+      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
             <title>'.$pagina["titolo"].'</title>';
 mysqli_close($link);
     ?>
   </head>
   <body>
-    <article>
+    <main>
       <h2>Ingredienti</h2>
       <div>
         <ul>
@@ -30,7 +30,7 @@ mysqli_close($link);
       <div>
         Sminuzzare tutto intero il limone togliendone i semi e unendovi la buccia grattata in precedenza, dividere in piccoli pezzetti la vainiglia, mescolare poi tutto il resto insieme entro a un vaso di vetro e vedere che subito il latte impazzisce. Agitare il vaso una volta al giorno e dopo otto giorni passarlo per pannolino e filtrarlo per carta.
       </div>
-    </article>
+    </main>
     <script type="text/javascript" src="main.js"></script>
     
   </body>

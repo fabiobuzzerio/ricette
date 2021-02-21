@@ -9,13 +9,13 @@
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="svg/'.$pagina["emoji"].'.svg" id="emoji">
+      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
             <title>'.$pagina["titolo"].'</title>';
 mysqli_close($link);
     ?>
   </head>
   <body>
-    <article>
+    <main>
       <h2>Ingredienti</h2>
       <div>
         <ul>
@@ -35,7 +35,7 @@ mysqli_close($link);
       <div>
         Per prima cosa, preparare le due creme con cui verrà farcita la zuppa inglese. Rompere i 4 tuorli in una casseruola, incorporarvi 200 g di zucchero e montarli fino a quando saranno ben spumosi. Unire 3 cucchiai di farina (setacciata), amalgamando bene, e poi diluire il composto con un litro di latte. Aggiungere ora la scorza del limone e mettere la crema sul fuoco, mescolando continuamente, finché si sarà addensata. Preparare ora la crema al cioccolato: mescolare il cacao con i 200 g di zucchero, i 3 cucchiai di farina (setacciata) e il lattte rimanenti. Unire anche il burro sciolto precedentemente e mescolare fino a che comincerà ad ispessirsi e bollire.
       </div>
-    </article>
+    </main>
     <script type="text/javascript" src="main.js"></script>
     
   </body>

@@ -1,6 +1,6 @@
 <?php
   $link = mysqli_connect("localhost", "root", "", "ricette");
-  if (empty($_GET["file"])) {
+  if (empty($_GET["file"]) || $_GET["file"]=="index") {
     $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='index'");
     $nav[] = mysqli_fetch_assoc($query);
     echo json_encode($nav);

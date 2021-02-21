@@ -4,19 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <link rel="icon" href="svg/2728.svg">
+    <link rel="icon" href="emoji/svg/2728.svg">
     <title>Aggiungi ricetta</title>';
   </head>
   <body>
     <nav>
       <div>
         <a href="/">
-          <img src="svg/1f468-1f3fb-200d-1f373.svg">
+          <img src="emoji/svg/1f468-1f3fb-200d-1f373.svg">
           <span>Ricette</span>
         </a>
       </div>
     </nav>
-    <article>
+    <main>
       <form id="aggiungiRicetta" action="crea-ricetta.php" method="get">
         <h3>Nome ricetta</h3>
         <input type="text" name="titolo" placeholder="Torta all'arancia" required>
@@ -40,15 +40,15 @@
         <textarea name="procedimento" placeholder="Inserisci le istruzioni per preparare la ricetta." required></textarea>
         <input type="submit" value="Crea">
       </form>
-    </article>
+    </main>
     <script type="text/javascript">
       h1 = document.createElement("h1");
       h1.innerHTML = document.title;
-      document.querySelector("article").prepend(h1);
+      document.querySelector("main").prepend(h1);
       h1Emoji = document.createElement("img");
       h1Emoji.id = "h1Emoji";
       h1Emoji.src = document.querySelector("link[rel=icon]").href;
-      document.querySelector("article").prepend(h1Emoji);
+      document.querySelector("main").prepend(h1Emoji);
     </script>
   </body>
 </html>

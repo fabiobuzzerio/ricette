@@ -9,13 +9,13 @@
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="svg/'.$pagina["emoji"].'.svg" id="emoji">
+      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
             <title>'.$pagina["titolo"].'</title>';
 mysqli_close($link);
     ?>
   </head>
   <body>
-    <article>
+    <main>
       <h2>Ingredienti</h2>
       <div>
         <ul>
@@ -32,7 +32,7 @@ mysqli_close($link);
       <div>
         Mescolare a parte la farina con la fecola di patate. Incorporare tutti gli altri ingredienti secondo logica e fare una pasta dura. Quindi stenderla e ricavare dei dischetti ai quali si aggiungerà della marmellata a piacere.
       </div>
-    </article>
+    </main>
     <script type="text/javascript" src="main.js"></script>
     
   </body>

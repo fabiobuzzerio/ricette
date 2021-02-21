@@ -9,13 +9,13 @@
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="svg/'.$pagina["emoji"].'.svg" id="emoji">
+      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
             <title>'.$pagina["titolo"].'</title>';
 mysqli_close($link);
     ?>
   </head>
   <body>
-    <article>
+    <main>
       <h2>Ingredienti</h2>
       <div>
         <ul>
@@ -32,7 +32,7 @@ mysqli_close($link);
       <div>
         Montare a spuma il burro, aggiungere pian piano lo zucchero e, uno a uno, i tuorli d'uovo. Incorporare la farina e il lievito setacciati e il latte a filo. Montare a neve gli albumi e unirli al composto. Dividere in due l'impasto e, in una delle parti, aggiungere il cacao. Infine, versare alternativamente, in una tortiera imburrata e infarinata, una parte del composto normale e una parte di quello al cacao. Infornare a calore moderato per 50 minuti circa.
       </div>
-    </article>
+    </main>
     <script type="text/javascript" src="main.js"></script>
     
   </body>
