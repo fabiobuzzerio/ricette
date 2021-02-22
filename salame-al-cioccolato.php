@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <?php
       $file = basename(__FILE__, '.php');
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
-            <title>'.$pagina["titolo"].'</title>';
-mysqli_close($link);
+      echo '<title>'.$pagina["titolo"].'</title>
+            <link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">';
+      mysqli_close($link);
     ?>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="main.js" async></script>
   <body>
     <main>
       <h2>Ingredienti</h2>
@@ -32,7 +33,5 @@ mysqli_close($link);
         Lavorare il burro fino a renderlo bianco e spumoso. Aggiungere lo zucchero e il cacao setacciati insieme, le mandorle tritate finemente e i biscotti tritati grossolanamente. Aggiungere il liquore e lavorare il composto, arrotolandolo con le mani, per dargli la forma di un salame. Avvolgerlo strettamente in carta vegetale imburrata, chiudendolo alle estremità. Tenere in frigorifero per circa 3-4 ore. Servire a fette.
       </div>
     </main>
-    <script type="text/javascript" src="main.js"></script>
-    
   </body>
 </html>

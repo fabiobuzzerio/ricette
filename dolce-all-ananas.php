@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <?php
       $file = basename(__FILE__, '.php');
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
-            <title>'.$pagina["titolo"].'</title>';
-mysqli_close($link);
+      echo '<title>'.$pagina["titolo"].'</title>
+            <link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">';
+      mysqli_close($link);
     ?>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="main.js" async></script>
   </head>
   <body>
     <main>
@@ -33,7 +34,5 @@ mysqli_close($link);
         Fare il budino con il latte (senza zucchero) e lasciare che si raffreddi mescolando ogni tanto per evitare che si formi una pellicina sopra. Sciogliere lo zucchero con il sugo dell'ananas e porlo sul fuoco a calore moderato e quando si sarà raffreddato mettere anche il burro (che deve essere lasciato fuori dal frigo dal giorno precedente) e poi il budino. Mescolare continuamente per ottenere una gustosissima crema. Prendere la forma di un dolce, mettere i biscotti aattorno e nel fondo della forma precedentemente bagnati con un po' di rhum mescolato a dell'acqua. Quindi mettere la crema e un po' di strato di ananas che sono stati precedentemente tagliati a pezzettini. Continuare così fino all'esaurimento degli ingredienti. Prima di servire può essere guarnito con panna montata.
       </div>
     </main>
-    <script type="text/javascript" src="main.js"></script>
-    
   </body>
 </html>

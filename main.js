@@ -1,11 +1,12 @@
-// NOME FILE DELLA PAGINA CORRENTE
+// FILE CORRENTE
 if (window.location.pathname == "/") {
   file = "index";
 } else {
   file = (window.location.pathname.split("/")[1]).split(".php")[0];
 }
 
-// GENERAZIONE NAV
+
+// GENERAZIONE NAV, TITOLO E ICONA
 nav = document.createElement("nav");
 document.body.prepend(nav);
 function navCreaLink(testo, url, emoji, barra) {
@@ -43,10 +44,11 @@ navCrea.onreadystatechange = function() {
       }
     }
   }
-}
+};
 navCrea.send();
 
-// IMPOSTA EMOJI E H1 PER OGNI PAGINA
+
+// IMPOSTA H1 ED H1EMOJI
 h1 = document.createElement("h1");
 h1.innerHTML = document.title;
 h1.contentEditable = "true";
@@ -56,7 +58,8 @@ h1Emoji.id = "h1Emoji";
 h1Emoji.src = document.querySelector("link[rel=icon]").href;
 document.querySelector("main").prepend(h1Emoji);
 
-// MODIFICA TITOLO H1 DELLE PAGINE
+
+// MODIFICA TITOLO
 h1.addEventListener("keydown", function(e) {
   if (e.which==13) {
     e.preventDefault();
@@ -79,18 +82,18 @@ h1.addEventListener("blur", function() {
   }
 });
 
-// MODIFICA EMOJI DELLE PAGINE
-// crea dialog box
+
+// MODIFICA EMOJI
 modificaEmojiContenitore = document.createElement("div");
 modificaEmojiContenitore.id = "modificaEmojiContenitore";
 document.querySelector("main").after(modificaEmojiContenitore);
 modificaEmoji = document.createElement("div");
 modificaEmojiContenitore.append(modificaEmoji);
-h3 = document.createElement("h3");
-h3.innerHTML = "Scegli la nuova emoji per "+document.title;
-modificaEmoji.append(h3);
+modificaEmojiH3 = document.createElement("h3");
+modificaEmojiH3.innerHTML = "Scegli la nuova emoji per "+document.title;
+modificaEmoji.append(modificaEmojiH3);
 emojiLista = document.createElement("div");
-h3.after(emojiLista);
+modificaEmojiH3.after(emojiLista);
 caricaEmoji = new XMLHttpRequest();
 caricaEmoji.open("GET", "carica-emoji", true);
 caricaEmoji.onreadystatechange = function() {
@@ -102,7 +105,7 @@ caricaEmoji.onreadystatechange = function() {
         emojiImg = document.createElement("span");
         emojiImg.scr = "none";
         emojiImg.classList.add("emoji-"+emojis[i]);
-        emojiImg.setAttribute('onclick', 'modificaEmoji(this)');
+        emojiImg.setAttribute('onclick', 'modificaEmojiFunzione(this)');
         emoji.append(emojiImg);
       }
   }
@@ -118,7 +121,7 @@ modificaEmojiContenitore.addEventListener('click', function(e) {
   modificaEmojiContenitore.classList.add("off");
   modificaEmojiContenitore.classList.remove("on");
 });
-function modificaEmoji(emoji) {
+function modificaEmojiFunzione(emoji) {
   emoji = emoji.className;
   emoji = emoji.split("emoji-")[1];
   modificaEmojiRichiesta = new XMLHttpRequest();
@@ -134,7 +137,7 @@ function modificaEmoji(emoji) {
       }
     }
   }
-  modificaEmojiRichiesta.send(null);
+  modificaEmojiRichiesta.send();
 }
 
 // CERCA RICETTE
@@ -187,7 +190,7 @@ cercaInput.addEventListener("keydown", function(e) {
   }
 });
 
-
+// IMPOSTAZIONE PULSANTE ESC
 document.addEventListener("keydown", function(e) {
   if (e.which == 27) {
     if (modificaEmoji.className = "on") {
@@ -208,6 +211,7 @@ aggiungiRicettaPulsante.href = "aggiungi-ricetta";
 aggiungiRicettaPulsante.id = "aggiungiRicettaPulsante";
 aggiungiRicettaPulsante.innerHTML = "+";
 cercaContenitore.after(aggiungiRicettaPulsante);
+
 
 // AGGIUNGI FRECCIA AI LINK ESTERNI
 if (document.querySelector("a[rel='external']") !== null) {

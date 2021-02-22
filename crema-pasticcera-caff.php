@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <?php
       $file = basename(__FILE__, '.php');
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
-            <title>'.$pagina["titolo"].'</title>';
-mysqli_close($link);
+      echo '<title>'.$pagina["titolo"].'</title>
+            <link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">';
+      mysqli_close($link);
     ?>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="main.js" async></script>
   </head>
   <body>
     <main>
@@ -32,7 +33,5 @@ mysqli_close($link);
         A questo punto, portare ad ebollizione il tutto e, mescolando continuamente, lasciare sobbollire a fuoco dolce per alcuni minuti, sbattendo di continuo con la frusta per evitare che si formino grumi e alternando l'aggiunta del latte freddo tenuto da parte finché il composto si sarà addensato. Spegnere il fuoco e lasciare raffreddare la crema, mescolando di tanto in tanto.
       </div>
     </main>
-    <script type="text/javascript" src="main.js"></script>
-    
   </body>
 </html>

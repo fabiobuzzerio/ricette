@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <?php
       $file = basename(__FILE__, '.php');
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
-            <title>'.$pagina["titolo"].'</title>';
-mysqli_close($link);
+      echo '<title>'.$pagina["titolo"].'</title>
+            <link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">';
+      mysqli_close($link);
     ?>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="main.js" async></script>
   </head>
   <body>
     <main>
@@ -35,7 +36,5 @@ mysqli_close($link);
         Tagliare il pandoro a fette orizzontali. Ricoprire la prima fetta di pandoro con la crema ancora calda e sovrappore le altre fette intervallandole dalla crema. Infine, spolverare il pandoro farcito con del cacao amaro.
       </div>
     </main>
-    <script type="text/javascript" src="main.js"></script>
-    
   </body>
 </html>

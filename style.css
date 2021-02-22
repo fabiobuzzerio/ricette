@@ -125,8 +125,7 @@ h3 {
 }
 main div {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+  flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: left;
   align-content: center;
@@ -134,7 +133,7 @@ main div {
   text-align: justify;
   line-height: 25px;
 }
-ul {
+main div ul {
   margin: 0;
 }
 .pagineLink {
@@ -164,6 +163,11 @@ ul {
 .pagineLink:hover {
   background: rgba(var(--hover));
 }
+
+
+
+
+
 a[rel="external"] {
   display: inline;
   border-radius: 5px;
@@ -415,8 +419,8 @@ select option {
 @media (prefers-color-scheme: light) {
   :root {
     --sfondo: 255, 255, 255;
-    --hover: #f4f4f4;
-    --medio: #d4d4d4;
+    --hover: 244, 244, 244;
+    --medio: 212, 212, 212;
     --testo: 0, 0, 0;
   }
 }

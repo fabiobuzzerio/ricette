@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <?php
       $file = basename(__FILE__, '.php');
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
-            <title>'.$pagina["titolo"].'</title>';
-mysqli_close($link);
+      echo '<title>'.$pagina["titolo"].'</title>
+            <link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">';
+      mysqli_close($link);
     ?>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="main.js" async></script>
   </head>
   <body>
     <main>
@@ -64,7 +65,5 @@ mysqli_close($link);
         In una teglia, riporre del sugo e poi, procedendo per strati, mettere la pasta, il sugo, la mozzarella, le polpettine, il grana padano grattuggiato, la mortadella e il prosciutto cotto (a straccetti). Finire la supercifie con sugo e formaggio. Cuocere in forno statico preriscaldato a 180° per circa mezz'ora.
       </div>
     </main>
-    <script type="text/javascript" src="main.js"></script>
-    
   </body>
 </html>

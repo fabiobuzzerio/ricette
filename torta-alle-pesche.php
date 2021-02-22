@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <?php
       $file = basename(__FILE__, '.php');
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
-            <title>'.$pagina["titolo"].'</title>';
-mysqli_close($link);
+      echo '<title>'.$pagina["titolo"].'</title>
+            <link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">';
+      mysqli_close($link);
     ?>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="main.js" async></script>
   </head>
   <body>
     <main>
@@ -33,7 +34,5 @@ mysqli_close($link);
         Montare le uova con lo zucchero fino a quando saranno diventate bianche e spumose, occorreranno circa 10 minuti. Unire il burro tagliato a cubetti e continuare a mescolare. Aggiungere la farina e la fecola setacciate. Sbucciare e tagliare 3 pesche a cubetti e incorporarle all’impasto. Versare l’impasto in uno stampo (imburrato e infarinato) da 28 cm di diametro e decorare la superficie con le due pesche rimanenti. Cuocere per circa 50 minuti in forno statico preriscaldato a 170 °C.
       </div>
     </main>
-    <script type="text/javascript" src="main.js"></script>
-
   </body>
 </html>

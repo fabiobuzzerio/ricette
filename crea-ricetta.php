@@ -39,7 +39,7 @@
     $html .= $_GET["procedimento"];
     $html .= '</div>
     </main>
-              <script type="text/javascript" src="main.js"></script>
+              
             </body>
           </html>';
   echo $html;

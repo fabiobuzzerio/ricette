@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../style.css"/>
     <?php
       $file = basename(__FILE__, '.php');
       $link = mysqli_connect("localhost", "root", "", "ricette");
       $query = mysqli_query($link, "SELECT * FROM pagine WHERE file='$file'");
       $pagina = mysqli_fetch_assoc($query);
-      echo '<link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">
-            <title>'.$pagina["titolo"].'</title>';
-mysqli_close($link);
+      echo '<title>'.$pagina["titolo"].'</title>
+            <link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">';
+      mysqli_close($link);
     ?>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="main.js" async></script>
   </head>
   <body>
     <main>
@@ -32,7 +33,5 @@ mysqli_close($link);
         Far bollire il latte con la vaniglia. In una casseruola montare i tuorli d'uovo con lo zucchero. Quando le uova avranno preso volume, unire la farina e, continuando a mescolare, versare a filo il latte tiepido. Aggiungere la scorza di limone e porre il composto sul fuoco. Continuare a mescolare affinché non si formino grumi. Quando la crema bollirà, lasciarla cuocere ancora per 5 minuti. Lasciar raffreddare mescolando. Pria di utilizzare togliere la scorza del limone.
       </div>
     </main>
-    <script type="text/javascript" src="main.js"></script>
-    
   </body>
 </html>
