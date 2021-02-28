@@ -9,5 +9,6 @@
       }
       echo json_encode($risultati);
     }
+    mysqli_close($link);
   }
 ?>

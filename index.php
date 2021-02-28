@@ -12,7 +12,7 @@
             <link rel="icon" href="emoji/svg/'.$pagina["emoji"].'.svg" id="emoji">';
     ?>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script type="text/javascript" src="main.js" async></script>
+    <script type="text/javascript" src="main.js" defer></script>
   </head>
   <body>
     <main>

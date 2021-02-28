@@ -8,14 +8,16 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
   <body>
-    <nav>
-      <div>
-        <a href="/">
-          <img src="emoji/svg/1f468-1f3fb-200d-1f373.svg">
-          <span>Ricette</span>
-        </a>
-      </div>
-    </nav>
+    <header>
+      <nav>
+        <div>
+          <a href="/">
+            <img src="emoji/svg/1f468-1f3fb-200d-1f373.svg">
+            <span>Ricette</span>
+          </a>
+        </div>
+      </nav>
+    </header>
     <main>
       <form id="aggiungiRicetta" action="crea-ricetta.php" method="get">
         <h3>Nome ricetta</h3>
@@ -31,8 +33,6 @@
             mysqli_close($link);
           ?>
         </select>
-        <h3>Emoji</h3>
-        <input type="text" name="emoji" placeholder="1f34a" required>
         <h3>Ingredienti</h3>
         <label for="procedimento"></label>
         <textarea name="ingredienti" placeholder="Inserisci ogni ingrediente separandoli con '; ' (un punto e virgola e uno spazio)." required></textarea>

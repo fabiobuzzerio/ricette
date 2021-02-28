@@ -13,7 +13,7 @@
       mysqli_close($link);
     ?>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script type="text/javascript" src="main.js" async></script>
+    <script type="text/javascript" src="main.js" defer></script>
   <body>
     <main>
       <h2>Ingredienti (4 persone)</h2>

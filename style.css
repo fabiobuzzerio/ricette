@@ -1,21 +1,25 @@
-/* FONT */
+/* font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* EMOJI SPRITES */
+
+/* emoji sprites */
 @import "emoji-sprites.css";
 
-html, body, div, p, span, h1, h2, h3, h4, h5, h6, input, textarea {
+
+/* generale */
+html, body, div, p, span, h1, h2, h3, h4, h5, h6, input, textarea, button {
   margin: 0;
   border: 0;
   padding: 0;
   font-family: 'Inter';
   color: rgba(var(--testo));
   scroll-behavior: smooth;
+  outline: none;
 }
 body {
   background-color: rgba(var(--sfondo));
 }
-div, p, span, form, input, textarea, select, option {
+div, p, span, form, input, textarea, select, option, button {
   font-size: 16px;
   font-weight: 400;
 }
@@ -26,8 +30,28 @@ img {
   -o-user-drag: none;
   user-drag: none;
 }
+h1 {
+  margin: 20px 0;
+  text-align: left;
+  font-size: 40px;
+  font-weight: 800;
+}
+h1:focus {
+  outline: none;
+}
+h2 {
+  text-align: left;
+  font-size: 30px;
+  font-weight: 700;
+}
+h3 {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+}
 
-/* SCROLLBAR */
+
+/* scrollbar */
 body {
   scrollbar-width: 8px;
   scrollbar-color: rgba(var(--medio));;
@@ -43,24 +67,35 @@ body {
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(var(--hover));
+  background-color: rgba(var(--testo));
   border-radius: 5px;
 }
-/* SELECTION */
+
+
+/* selection */
 ::-moz-selection { /* firefox */
   background: rgba(var(--medio));
 }
 ::selection {
   background: rgba(var(--medio));
 }
-/* NAV */
-nav {
+
+
+/* nav */
+header {
   position: fixed;
   top: 0;
   padding: 4vh 4vw;
   background: rgba(var(--sfondo));
-  max-width: 92vw;
-  width: 92vw;
+  width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+nav {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -87,41 +122,100 @@ nav .navBarra {
   vertical-align: middle;
 }
 
-/* STILE CONTENUTO */
+header > span {
+  padding: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+header > span:hover {
+  background: rgba(var(--hover));
+}
+header > span  svg {
+  width: 18px;
+  height: 18px;
+}
+header > span  svg path {
+  fill: rgba(var(--testo));
+}
+
+
+/* cancella */
+#cancellaContenitore {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  display: none;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(var(--sfondo), 0.8);
+  z-index: 1;
+}
+#cancellaContenitore.on  {
+  display: flex;
+}
+#cancellaContenitore.off  {
+  display: none;
+}
+#cancellaContenitore div {
+  background: rgba(var(--sfondo));
+  box-shadow: rgba(var(--medio)) 0px 0px 0px 1px, rgba(var(--medio)) 0px 2px 4px;
+  width: 400px;
+  border-radius: 5px;
+  margin: auto;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+
+}
+#cancellaContenitore div h3 {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#cancellaContenitore div h3 img {
+  height: 20px;
+  margin: 0 3px;
+}
+#cancellaContenitore button {
+  width: 100%;
+  height: 50px;
+  padding: 12px;
+  background: rgba(var(--medio));
+  border: none;
+  border-radius: 5px;
+  color: rgba(var(--testo));
+}
+#cancellaContenitore button:hover {
+  background: rgba(var(--testo));
+  color: rgba(var(--sfondo));
+}
+
+
+/* contenuto principale */
 main {
   max-width: 700px;
   padding: 15vh 0;
   margin: 0 auto;
-
 }
-#h1Emoji {
+main #h1Emoji {
   width: 80px;
   cursor: pointer;
   border-radius: 5px;
 }
-#h1Emoji:hover {
+main #h1Emoji:hover {
   background: rgba(var(--hover));
 }
-h1 {
-  margin: 20px 0;
-  text-align: left;
-  font-size: 40px;
-  font-weight: 800;
-}
-h1:focus {
-  outline: none;
-}
-h2 {
+main h2 {
   margin: 20px 0 10px 0;
-  text-align: left;
-  font-size: 30px;
-  font-weight: 700;
 }
-h3 {
+main h3 {
   margin: 10px 0;
-  text-align: left;
-  font-size: 20px;
-  font-weight: 600;
 }
 main div {
   display: flex;
@@ -136,7 +230,7 @@ main div {
 main div ul {
   margin: 0;
 }
-.pagineLink {
+main .pagineLink {
   display: flex;
   padding: 4px;
   border-radius: 5px;
@@ -149,56 +243,53 @@ main div ul {
   align-content: center;
   max-width: 100%;
 }
-.pagineLink span {
+main .pagineLink span {
   border-bottom: 0.05em solid rgba(var(--medio));
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.pagineLink img {
+main .pagineLink img {
   width: 16px;
   margin-right: 4px;
 }
-.pagineLink:hover {
+main .pagineLink:hover {
   background: rgba(var(--hover));
 }
-
-
-
-
-
-a[rel="external"] {
+main a[rel="external"] {
   display: inline;
   border-radius: 5px;
   padding: 4px;
   text-decoration: none;
 }
-a[rel="external"] span {
+main a[rel="external"] span {
   border-bottom: 0.05em solid rgba(var(--medio));
   font-weight: 600;
   font-size: 16px;
   color: rgba(var(--testo));
 }
-a[rel="external"] svg {
+main a[rel="external"] svg {
   width: 16px;
   height: 14px;
   margin-right: 3px;
 }
-a[rel="external"] svg path {
+main a[rel="external"] svg path {
   fill: rgba(var(--testo));
 }
-a[rel="external"]:hover {
+main a[rel="external"]:hover {
   background: rgba(var(--hover));
 }
 
-/* FORM  */
+
+/* form  */
 input, textarea, select {
   display: block;
   width: 100%;
+  height: 50px;
   padding: 12px;
   margin-bottom: 20px;
-  border: 1px solid rgba(var(--hover));
+  border: 1px solid rgba(var(--medio));
   border-radius: 5px;
   color: rgba(var(--testo));
   background-color: transparent;
@@ -214,25 +305,35 @@ textarea {
   resize: none;
 }
 input:focus, textarea:focus, select:focus {
-  border: 1px solid rgba(var(--medio));
+  border: 1px solid rgba(var(--testo));
   border-radius: 5px;
   outline: none;
 }
 input[type="submit"] {
-  background: rgba(var(--hover));
+  background: rgba(var(--medio));
+  border: none;
   margin: 0;
   width: 100% !important;
+  cursor: pointer;
 }
 input[type="submit"]:hover {
-  border: 1px solid rgba(var(--medio));
-  background: rgba(var(--medio));
-  cursor: pointer;
+  background: rgba(var(--testo));
+  color: rgba(var(--sfondo));
+  border: none;
 }
 select option {
   color: black;
 }
+form > div {
+  height: 30vh;
+  overflow: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
 
-/* MODIFICA EMOJI */
+
+/* modifica emoji */
 #modificaEmojiContenitore {
   position: fixed;
   top: 0;
@@ -243,7 +344,7 @@ select option {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: rgba(var(--sfondo), 0.5);
+  background: rgba(var(--sfondo), 0.8);
   z-index: 1;
 }
 #modificaEmojiContenitore.on  {
@@ -256,25 +357,29 @@ select option {
   background: rgba(var(--sfondo));
   box-shadow: rgba(var(--medio)) 0px 0px 0px 1px, rgba(var(--medio)) 0px 2px 4px;
   width: 60%;
-  height: 50%;
+  height: 70%;
   border-radius: 5px;
-  overflow: hidden;
-  display: block;
   margin: auto;
   padding: 30px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 #modificaEmojiContenitore > div > h3 {
-  margin: 0 0 10px 0;
-  min-height: 6%;
+  text-align: center;
+  margin-bottom: 10px;
 }
-
+#modificaEmojiContenitore > div > h3 img {
+  height: 20px;
+  margin: 0 3px;
+}
 #modificaEmojiContenitore > div > div {
-  overflow-y: scroll;
+  overflow: auto;
   display: flex;
+  flex-grow: 1;
   flex-flow: row wrap;
-  width: 100%;
-  height: 94%;
+  justify-content: center;
+  min-height: 0; /* for Firefox */
 }
 #modificaEmojiContenitore > div > div > div {
   display: flex;
@@ -290,7 +395,8 @@ select option {
   background: rgba(var(--hover));
 }
 
-/* CERCA RICETTA */
+
+/* cerca ricetta */
 #cercaContenitore {
   position: fixed;
   top: 0;
@@ -304,7 +410,7 @@ select option {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: rgba(var(--sfondo), 0.5);
+  background: rgba(var(--sfondo), 0.8);
 }
 #cercaContenitore.on  {
   display: flex;
@@ -316,48 +422,52 @@ select option {
   background: rgba(var(--sfondo));
   box-shadow: rgba(var(--medio)) 0px 0px 0px 1px, rgba(var(--medio)) 0px 2px 4px;
   width: 40%;
-  height: 40%;
+  height: 50%;
   border-radius: 5px;
-  overflow: hidden;
-  display: block;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 #cercaContenitore > div > input {
-  margin: 0;
+  margin: 0 0 10px 0;
   border: none;
-  border: 3px;
-  padding: 20px;
+  padding: 0;
 }
 #cercaContenitore > div > input:focus {
-  border: 0 0 1px 0 solid rgba(var(--medio));
   border-radius: none;
   outline: none;
 }
-#cercaContenitore > div > section {
-  overflow-y: scroll;
+#cercaContenitore > div > div {
+  overflow: auto;
   display: flex;
+  flex-grow: 1;
   flex-flow: column nowrap;
-  width: 100%;
-  height: calc(100% - 60px);
+  justify-content: space-between;
+  min-height: 0; /* for Firefox */
 }
-#cercaContenitore > div > section > a {
-  padding: 10px 20px;
+#cercaContenitore > div > div > a {
+  padding: 10px 0;
   text-decoration: none;
+  display: flex;
+  border-radius: 5px;
 }
-#cercaContenitore > div > section > a:hover {
+#cercaContenitore > div > div > a:hover {
   background: rgba(var(--hover));
 }
-#cercaContenitore > div > section > a span {
+#cercaContenitore > div > div > a span {
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#cercaContenitore > div > section > a img {
+#cercaContenitore > div > div > a img {
   width: 16px;
-  margin-right: 4px;
+  margin: 0 4px 0 6px;
 }
 
-/* AGGIUNGI RICETTA */
+
+/* pulsante aggiungi ricetta */
 #aggiungiRicettaPulsante {
   position: fixed;
   bottom: 4vw;
@@ -383,15 +493,21 @@ select option {
 }
 
 
-/* RESPONSIVE */
+/* responsive */
 @media only screen and (max-width: 1000px) {
-  nav {
+  header {
     padding: 4vh 15vw;
-    width: calc(100vw - 30vw);
   }
   main {
     width: auto;
     padding: 15vh 15vw;
+  }
+  #modificaEmojiContenitore > div {
+    width: 80%;
+    height: 90%;
+  }
+  #cancellaContenitore > div {
+    width: 70%;
   }
   #aggiungiRicettaPulsante {
     bottom: 7vw;
@@ -399,15 +515,15 @@ select option {
   }
 }
 @media only screen and (max-width: 800px) {
-  nav a span {
+  header nav a span {
     white-space: nowrap;
-    max-width: 240px;
+    max-width: 230px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 }
-@media only screen and (max-width: 600px) {
-  nav a span {
+@media only screen and (max-width: 700px) {
+  header nav a span {
     white-space: nowrap;
     max-width: 100px;
     overflow: hidden;
@@ -415,7 +531,7 @@ select option {
   }
 }
 
-/* COLORI */
+/* colori */
 @media (prefers-color-scheme: light) {
   :root {
     --sfondo: 255, 255, 255;
